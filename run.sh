@@ -7,7 +7,7 @@ then
   helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
   helm repo add stable https://charts.helm.sh/stable
   helm repo update
-  #kubectl create --namespace prometheus
+  kubectl create --namespace prometheus
   htpasswd -b -c prometheus-basic-auth prometheus ${PROM_AUTH_PASSWORD}
   kubectl create secret -n prometheus generic basic-auth --from-file=prometheus-basic-auth
   kubectl create -f monitoring/prometheus/cloud_issuer.yaml
